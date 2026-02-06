@@ -1,0 +1,19 @@
+# Flutter / Dart
+**/.dart_tool/
+**/build/
+**/.gradle/
+**/.idea/
+**/.vscode/
+**/*.iml
+
+# Android
+**/android/local.properties
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+
+# Secrets Firebase
+**/android/app/google-services.json
+**/ios/Runner/GoogleService-Info.plist
+**/*.jks
+**/key.properties
