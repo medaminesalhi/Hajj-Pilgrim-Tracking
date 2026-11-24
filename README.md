@@ -1,43 +1,44 @@
 <div align="center">
 
-# 🕋 Hajj Tracking App
+# Hajj Pilgrim Tracking
 
 **Suivi GPS des pèlerins & supervision des groupes par les guides (Mourafiq)**
 
 Une solution mobile composée de deux applications Flutter connectées à Firebase Cloud Firestore, conçue pour faciliter l'accompagnement des pèlerins pendant le Hajj.
 
 <p>
-  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter" />
-  <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart" />
-  <img src="https://img.shields.io/badge/Firebase-DD2C00?style=for-the-badge&logo=firebase&logoColor=white" alt="Firebase" />
-  <img src="https://img.shields.io/badge/Android-34A853?style=for-the-badge&logo=android&logoColor=white" alt="Android" />
+  <a href="https://flutter.dev/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" width="54" height="54" alt="Flutter" /></a>&nbsp;&nbsp;&nbsp;
+  <a href="https://dart.dev/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" width="54" height="54" alt="Dart" /></a>&nbsp;&nbsp;&nbsp;
+  <a href="https://firebase.google.com/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg" width="54" height="54" alt="Firebase" /></a>&nbsp;&nbsp;&nbsp;
+  <a href="https://developer.android.com/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg" width="54" height="54" alt="Android" /></a>
 </p>
 <p>
-  <img src="https://img.shields.io/badge/Version-1.0.0-2563EB?style=flat-square" alt="Version 1.0.0" />
-  <img src="https://img.shields.io/badge/Dart-%5E3.8.1-0175C2?style=flat-square" alt="Dart ^3.8.1" />
-  <img src="https://img.shields.io/badge/Android-API%2023%2B-34A853?style=flat-square" alt="Android API 23+" />
-  <img src="https://img.shields.io/badge/Tracking-15s%20(intervalle)-0F766E?style=flat-square" alt="Intervalle de suivi configuré à 15 secondes" />
+  <img src="https://img.shields.io/badge/Flutter-Mobile-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter" />
+  <img src="https://img.shields.io/badge/Dart-%5E3.8.1-0175C2?style=flat-square&logo=dart&logoColor=white" alt="Dart" />
+  <img src="https://img.shields.io/badge/Cloud-Firestore-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Cloud Firestore" />
+  <img src="https://img.shields.io/badge/Android-API%2023%2B-34A853?style=flat-square&logo=android&logoColor=white" alt="Android" />
+  <img src="https://img.shields.io/badge/GPS-15s%20(configur%C3%A9)-0F766E?style=flat-square" alt="Intervalle GPS configuré" />
 </p>
 
-[Présentation](#-présentation) · [Fonctionnalités](#-fonctionnalités) · [Architecture](#-architecture) · [Installation](#-installation) · [Sécurité](#-sécurité-et-confidentialité)
+[Présentation](#présentation) · [Fonctionnalités](#fonctionnalités) · [Architecture](#architecture) · [Stack](#stack-technologique) · [Installation](#installation) · [Sécurité](#sécurité-et-confidentialité)
 
 </div>
 
 ---
 
-## 📖 Présentation
+## Présentation
 
-Lors du Hajj, la coordination de groupes de pèlerins dans des zones très fréquentées représente un défi pour les guides. **Hajj Tracking App** propose un système de géolocalisation et de supervision qui permet aux pèlerins de partager leur position et aux guides de visualiser leur dernière position enregistrée, leur distance et leur groupe de transport.
+Lors du Hajj, la coordination de groupes de pèlerins dans des zones très fréquentées représente un défi pour les guides. **Hajj Pilgrim Tracking** propose un système de géolocalisation et de supervision qui permet aux pèlerins de partager leur position et aux guides de visualiser leur dernière position enregistrée, leur distance et leur groupe de transport.
 
 | Application pèlerin | Application Mourafiq (guide) |
 | :--- | :--- |
-| 📱 Inscription et partage de position GPS | 📊 Tableau de bord et supervision |
+| Inscription et partage de position GPS | Tableau de bord et supervision |
 | Démarrage et arrêt du suivi par l'utilisateur | Classification par distance et statistiques par bus |
 | `app_utilisateur/` | `app_admin/` |
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-### 📱 Application pèlerin
+### Application pèlerin
 
 - Inscription avec nom, prénom, passeport, téléphone et numéro de bus.
 - Récupération de la position GPS avec gestion des autorisations de localisation.
@@ -47,7 +48,7 @@ Lors du Hajj, la coordination de groupes de pèlerins dans des zones très fréq
 - Conservation de la session locale avec `SharedPreferences`.
 - Ouverture de la position affichée dans Google Maps.
 
-### 🧭 Application Mourafiq — Guide
+### Application Mourafiq — Guide
 
 - Tableau de bord réactif alimenté par les flux Firestore (`snapshots()`).
 - Calcul de la distance entre la position relevée du guide et celle de chaque pèlerin.
@@ -57,32 +58,47 @@ Lors du Hajj, la coordination de groupes de pèlerins dans des zones très fréq
 - Accès rapide à l'appel téléphonique, à WhatsApp et à Google Maps.
 - Suppression manuelle d'un dossier avec confirmation ; l'interface bloque la suppression si une mise à jour connue date de moins de 24 heures.
 
-### 🚦 Classification par distance
+### Classification par distance
 
 | Statut | Distance par rapport au guide (seuils par défaut) |
 | :--- | :--- |
-| 🟢 Proche | ≤ 100 m |
-| 🟠 Éloigné | > 100 m et ≤ 500 m |
-| 🔴 Très éloigné | > 500 m |
+| Proche | ≤ 100 m |
+| Éloigné | > 100 m et ≤ 500 m |
+| Très éloigné | > 500 m |
 
 Les deux seuils sont modifiables dans le tableau de bord. Ils sont partagés entre les écrans de l'application guide via le singleton `DistanceThresholds`. Ils ne constituent pas un dispositif d'alerte d'urgence.
 
-## 🏗️ Architecture
+## Architecture
 
 L'architecture s'appuie sur deux clients mobiles et une base de données cloud partagée. Le pèlerin transmet ses coordonnées ; le guide écoute les modifications de la collection `hojjaj` et calcule localement les distances à partir de sa propre position.
 
 ```mermaid
 flowchart LR
-    GPS[GPS du pèlerin] --> U[Application pèlerin - Flutter / Dart]
-    U --> T[Foreground Tracking Service]
-    U -->|Inscription| F[(Firebase Cloud Firestore)]
-    T -->|Coordonnées GPS et horodatage| F
-    U <--> S[(Session locale)]
-    F -->|Flux de snapshots| A[Application Mourafiq - Flutter / Dart]
-    G[GPS du guide] --> A
-    A --> D[Distances, filtres et statistiques]
-    A -->|Notes et suppression| F
-    A --> E[Google Maps / WhatsApp / Appel]
+    subgraph P["Pilgrim Application"]
+        direction TB
+        GPS["GPS / Geolocator"] --> U["Flutter UI"]
+        U --> T["Foreground Tracking Service"]
+        U <--> S[("SharedPreferences")]
+    end
+    subgraph C["Cloud Layer"]
+        F[("Firebase Cloud Firestore<br/>Collection: hojjaj")]
+    end
+    subgraph M["Mourafiq Application"]
+        direction TB
+        G["Guide GPS"] --> A["Flutter Dashboard"]
+        A --> D["Distance / Filters / Statistics"]
+        A --> E["Maps / WhatsApp / Phone"]
+    end
+    U -->|Registration| F
+    T -->|GPS coordinates and timestamp| F
+    F -->|Firestore snapshots| A
+    A -->|Notes and deletion| F
+    classDef mobile fill:#E8F4FD,stroke:#02569B,color:#14324B,stroke-width:1.5px
+    classDef cloud fill:#FFF4D6,stroke:#D97706,color:#57330A,stroke-width:2px
+    classDef output fill:#E6F5EF,stroke:#0F766E,color:#134E4A
+    class GPS,U,T,S,G,A mobile
+    class F cloud
+    class D,E output
 ```
 
 ### Flux de données
@@ -93,23 +109,61 @@ flowchart LR
 4. L'application guide reçoit les modifications via un flux Firestore.
 5. Les distances, catégories et statistiques sont calculées localement puis affichées dans l'interface.
 
-## 🛠️ Stack technologique
+### Diagramme de séquence — Synchronisation GPS
+
+```mermaid
+sequenceDiagram
+    actor P as Pèlerin
+    participant U as Application Flutter
+    participant T as Service GPS Android
+    participant F as Cloud Firestore
+    participant A as Application Mourafiq
+    P->>U: Inscription et autorisation GPS
+    U->>F: Créer ou mettre à jour le profil
+    P->>U: Activer le suivi
+    U->>T: Démarrer le service
+    A->>F: Écouter la collection hojjaj
+    loop Intervalle configuré à 15 secondes
+        T->>T: Relever la position GPS
+        T->>F: Mettre à jour les coordonnées
+        F-->>A: Snapshot actualisé
+        A->>A: Recalculer les distances et statistiques
+    end
+    P->>U: Arrêter le suivi
+    U->>T: Arrêter le service
+```
+
+## Stack technologique
 
 | Technologie | Rôle |
 | :--- | :--- |
-| <img src="https://cdn.simpleicons.org/flutter/02569B" width="20" alt="" /> **Flutter** | Interfaces mobiles des deux applications |
-| <img src="https://cdn.simpleicons.org/dart/0175C2" width="20" alt="" /> **Dart** | Logique applicative |
-| <img src="https://cdn.simpleicons.org/firebase/DD2C00" width="20" alt="" /> **Firebase Core** | Initialisation des services Firebase |
-| <img src="https://cdn.simpleicons.org/firebase/DD2C00" width="20" alt="" /> **Cloud Firestore** | Stockage des profils et synchronisation des positions |
-| **Geolocator** | Acquisition GPS et calcul de distance |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" width="20" alt="" /> **Flutter** | Interfaces mobiles des deux applications |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" width="20" alt="" /> **Dart** | Logique applicative |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg" width="20" alt="" /> **Firebase Core** | Initialisation des services Firebase |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg" width="20" alt="" /> **Cloud Firestore** | Stockage des profils et synchronisation des positions |
+| <img src="https://img.shields.io/badge/GPS-Geolocator-0F766E?style=flat-square" alt="Geolocator" /> | Acquisition GPS et calcul de distance |
 | **Flutter Foreground Task** | Exécution du service de suivi Android |
 | **SharedPreferences** | Persistance de la session locale |
 | **URL Launcher** | Ouverture des applications externes et liens |
-| <img src="https://cdn.simpleicons.org/android/34A853" width="20" alt="" /> **Android / Gradle** | Configuration et compilation natives |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg" width="20" alt="" /> **Android / Gradle** | Configuration et compilation natives |
 
-## 🗄️ Modèle de données
+## Modèle de données
 
 Les applications utilisent la collection Firestore `hojjaj`. Chaque document est actuellement identifié par le numéro de passeport du pèlerin.
+
+```mermaid
+flowchart TB
+    DB[("Cloud Firestore")] --> C["hojjaj — collection"]
+    C --> P["Document pèlerin — ID passeport"]
+    P --> I["Identité et contact<br/>nom, prenom, passeport, telephone, bus"]
+    P --> G["Géolocalisation<br/>latitude, longitude, position"]
+    P --> H["Horodatage<br/>date, createdAt, lastUpdate"]
+    P --> S["Supervision<br/>active, guideNote"]
+    classDef cloud fill:#FFF4D6,stroke:#D97706,color:#57330A
+    classDef fields fill:#E8F4FD,stroke:#02569B,color:#14324B
+    class DB,C,P cloud
+    class I,G,H,S fields
+```
 
 | Champ | Type | Description |
 | :--- | :--- | :--- |
@@ -125,10 +179,10 @@ Les applications utilisent la collection Firestore `hojjaj`. Chaque document est
 
 Le suivi actualise le même document avec une écriture fusionnée (`SetOptions(merge: true)`) ; il ne conserve pas un historique complet des trajectoires.
 
-## 📂 Structure du projet
+## Structure du projet
 
 ```text
-hajj-tracking-app/
+hajj-pilgrim-tracking/
 ├── app_utilisateur/
 │   ├── android/                  # Configuration Android
 │   ├── lib/
@@ -152,7 +206,7 @@ hajj-tracking-app/
 └── README.md
 ```
 
-## 🚀 Installation
+## Installation
 
 ### 1. Prérequis
 
@@ -225,7 +279,7 @@ flutter build apk --release
 
 Le fichier est normalement généré dans `build/app/outputs/flutter-apk/app-release.apk`. La configuration Gradle actuelle utilise la clé de signature debug pour le build release : prévoir une signature dédiée avant distribution.
 
-## 🧪 Validation fonctionnelle
+## Validation fonctionnelle
 
 Scénario de test proposé après configuration de Firebase et des autorisations :
 
@@ -241,7 +295,7 @@ Scénario de test proposé après configuration de Firebase et des autorisations
 
 Pour analyser le code, exécuter `flutter analyze` dans chaque application. Les dossiers `test/` existent, mais aucune couverture des scénarios ci-dessus ni exécution réussie n'est attestée ici.
 
-## 📸 Aperçu des interfaces
+## Aperçu des interfaces
 
 | Application pèlerin | Application Mourafiq |
 | :--- | :--- |
@@ -259,7 +313,7 @@ Pour analyser le code, exécuter `flutter analyze` dans chaque application. Les 
 
 -->
 
-## 🔐 Sécurité et confidentialité
+## Sécurité et confidentialité
 
 Le projet manipule des informations personnelles et des données de géolocalisation sensibles. La session locale actuelle n'est pas une authentification Firebase, et les règles Firestore du projet cloud ne sont pas incluses dans le dépôt. Avant toute utilisation réelle, les évolutions suivantes sont nécessaires :
 
@@ -271,7 +325,7 @@ Le projet manipule des informations personnelles et des données de géolocalisa
 
 > Ce projet ne doit pas être considéré comme un système de sécurité ou de secours certifié. Une position affichée peut être ancienne ou indisponible.
 
-## 🗺️ Perspectives d'évolution
+## Perspectives d'évolution
 
 - Authentification et autorisations par rôle.
 - Carte interactive intégrée pour visualiser les groupes.
@@ -279,7 +333,7 @@ Le projet manipule des informations personnelles et des données de géolocalisa
 - Historique des déplacements avec politique de conservation.
 - Tests automatisés et intégration continue avec GitHub Actions.
 
-## 🤝 Contribution
+## Contribution
 
 Les améliorations peuvent être proposées via une issue ou une pull request. Aucune licence explicite n'est actuellement incluse dans le dépôt ; vérifier les droits applicables avant toute réutilisation ou redistribution.
 
@@ -287,7 +341,7 @@ Les améliorations peuvent être proposées via une issue ou une pull request. A
 
 <div align="center">
 
-**Hajj Tracking App** · Mobile Development · GPS Tracking · Cloud Synchronization
+**Hajj Pilgrim Tracking** · Mobile Development · GPS Tracking · Cloud Synchronization
 
 <sub>Built with Flutter, Dart & Firebase.</sub>
 
